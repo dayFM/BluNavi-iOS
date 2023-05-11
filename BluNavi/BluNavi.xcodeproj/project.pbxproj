@@ -11,6 +11,9 @@
 		8C04B0B52A0B11FE00D2103F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C04B0B42A0B11FE00D2103F /* ContentView.swift */; };
 		8C04B0B72A0B11FE00D2103F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C04B0B62A0B11FE00D2103F /* Assets.xcassets */; };
 		8C04B0BA2A0B11FE00D2103F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C04B0B92A0B11FE00D2103F /* Preview Assets.xcassets */; };
+		8C7044B92A0CF0D600ECBEED /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7044B82A0CF0D600ECBEED /* Tag.swift */; };
+		8C7044BC2A0CF33F00ECBEED /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7044BB2A0CF33F00ECBEED /* SessionManager.swift */; };
+		8C7044BE2A0CFEA400ECBEED /* NavigatingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7044BD2A0CFEA400ECBEED /* NavigatingCard.swift */; };
 		8CB9F7642A0CD13A00CB8EFB /* EstimoteUWB.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB9F7622A0CD11F00CB8EFB /* EstimoteUWB.xcframework */; };
 		8CB9F7652A0CD13A00CB8EFB /* EstimoteUWB.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB9F7622A0CD11F00CB8EFB /* EstimoteUWB.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8CB9F7712A0CD21600CB8EFB /* Inter-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8CB9F7682A0CD21600CB8EFB /* Inter-ExtraBold.ttf */; };
@@ -49,6 +52,9 @@
 		8C04B0B42A0B11FE00D2103F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8C04B0B62A0B11FE00D2103F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8C04B0B92A0B11FE00D2103F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8C7044B82A0CF0D600ECBEED /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		8C7044BB2A0CF33F00ECBEED /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		8C7044BD2A0CFEA400ECBEED /* NavigatingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigatingCard.swift; sourceTree = "<group>"; };
 		8CB9F75F2A0CCEC700CB8EFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8CB9F7622A0CD11F00CB8EFB /* EstimoteUWB.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = EstimoteUWB.xcframework; sourceTree = "<group>"; };
 		8CB9F7682A0CD21600CB8EFB /* Inter-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -102,10 +108,11 @@
 				8CB9F7672A0CD1C500CB8EFB /* Framework */,
 				8CB9F75F2A0CCEC700CB8EFB /* Info.plist */,
 				8C04B0B22A0B11FE00D2103F /* BluNaviApp.swift */,
+				8C7044BA2A0CF0E300ECBEED /* Models */,
 				8CB9F77E2A0CD3E900CB8EFB /* Views */,
+				8CB9F77D2A0CD2F200CB8EFB /* ViewModels */,
 				8C04B0B62A0B11FE00D2103F /* Assets.xcassets */,
 				8C04B0B82A0B11FE00D2103F /* Preview Content */,
-				8CB9F77D2A0CD2F200CB8EFB /* ViewModels */,
 			);
 			path = BluNavi;
 			sourceTree = "<group>";
@@ -116,6 +123,14 @@
 				8C04B0B92A0B11FE00D2103F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		8C7044BA2A0CF0E300ECBEED /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8C7044B82A0CF0D600ECBEED /* Tag.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		8CB9F7672A0CD1C500CB8EFB /* Framework */ = {
@@ -146,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				8CB9F77B2A0CD2E500CB8EFB /* UWBManager.swift */,
+				8C7044BB2A0CF33F00ECBEED /* SessionManager.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -158,6 +174,7 @@
 				8CB9F7812A0CD58200CB8EFB /* Color.swift */,
 				8CB9F7832A0CD82F00CB8EFB /* BluNaviLogo.swift */,
 				8CB9F7852A0CD88B00CB8EFB /* DestinationSelectionView.swift */,
+				8C7044BD2A0CFEA400ECBEED /* NavigatingCard.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -242,7 +259,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C7044B92A0CF0D600ECBEED /* Tag.swift in Sources */,
+				8C7044BE2A0CFEA400ECBEED /* NavigatingCard.swift in Sources */,
 				8C04B0B52A0B11FE00D2103F /* ContentView.swift in Sources */,
+				8C7044BC2A0CF33F00ECBEED /* SessionManager.swift in Sources */,
 				8CB9F7802A0CD3FC00CB8EFB /* ScanningView.swift in Sources */,
 				8CB9F77C2A0CD2E500CB8EFB /* UWBManager.swift in Sources */,
 				8CB9F7822A0CD58200CB8EFB /* Color.swift in Sources */,

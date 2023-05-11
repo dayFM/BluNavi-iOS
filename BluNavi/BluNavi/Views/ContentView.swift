@@ -9,27 +9,26 @@ import SwiftUI
 import EstimoteUWB
 
 struct ContentView: View {
-    let uwbManager: UWBManager
+    @ObservedObject var uwbManager: UWBManager
+    @ObservedObject var sessionManager: SessionManager
     
     var body: some View {
         NavigationView {
             VStack {
                 ScanningView()
                 
-                NavigationLink(destination: DestinationSelectionView()) {
+                NavigationLink(destination: DestinationSelectionView(sessionManager: sessionManager)) {
                     Text("Click me to get started")
                 }
-                .navigationBarBackButtonHidden(true)
             }
         }
-        
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(uwbManager: UWBManager())
-            .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
+        ContentView(uwbManager: UWBManager(), sessionManager: SessionManager())
+            .previewDevice(PreviewDevice(rawValue: "iPhone 13"))
     }
 }
 

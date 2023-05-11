@@ -25,6 +25,6 @@ struct ScanningView: View {
 struct ScanningView_Previews: PreviewProvider {
     static var previews: some View {
         ScanningView()
-            .previewDevice(PreviewDevice(rawValue: "iPhone 12"))
+            .previewDevice(PreviewDevice(rawValue: "iPhone 13"))
     }
 }

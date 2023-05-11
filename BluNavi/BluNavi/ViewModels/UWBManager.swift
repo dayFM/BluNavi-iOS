@@ -8,7 +8,7 @@
 import Foundation
 import EstimoteUWB
 
-class UWBManager {
+class UWBManager: ObservableObject {
     private var uwbManager: EstimoteUWBManager?
     
     init() {
