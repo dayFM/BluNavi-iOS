@@ -33,8 +33,6 @@ struct NavigatingCard: View {
                 Text("15.2 feet away.")
                     .font(.custom("Inter-Black", size: 40))
                     .foregroundColor(Color(hex: "00B2FF"))
-                
-                
             }
             
             Spacer()
