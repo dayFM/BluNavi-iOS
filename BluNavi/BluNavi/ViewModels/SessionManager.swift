@@ -57,20 +57,20 @@ class SessionManager: ObservableObject {
     }
     
     func requestTagDirection(tagSsid: String, completion: @escaping(String) -> Void) {
-        let baseURL = "http://10.155.234.210:4999"
+        let baseURL = "http://10.19.247.51:4999"
 
         // JSON Body
         let body: [[String : Any]] = [
             [
-                "distance": String(self.ssidToDistances["99a8c3e5fd7b5ecbe61e91969cfc5605"] ?? 10.0),
+                "distance": String(self.ssidToDistances["99a8c3e5fd7b5ecbe61e91969cfc5605"]! * 3.28084),
                 "ssid": "99a8c3e5fd7b5ecbe61e91969cfc5605"
             ],
             [
-                "distance": String(self.ssidToDistances["827239f64378a06c4aacf9a7b286ed30"] ?? 10.0),
+                "distance": String(self.ssidToDistances["827239f64378a06c4aacf9a7b286ed30"]! * 3.28084),
                 "ssid": "827239f64378a06c4aacf9a7b286ed30"
             ],
             [
-                "distance": String(self.ssidToDistances["4fdff8d27d4e2c70d274b781710a1000"] ?? 10.0),
+                "distance": String(self.ssidToDistances["4fdff8d27d4e2c70d274b781710a1000"]! * 3.28084),
                 "ssid": "4fdff8d27d4e2c70d274b781710a1000"
             ]
         ]
@@ -85,7 +85,9 @@ class SessionManager: ObservableObject {
             .responseDecodable(of: JSON.self) { response in
                 switch response.result {
                 case .success(let value):
-                    print("Server Response Value: \(value)")
+                    print("Server Response Direction:   \(value["direction"].floatValue * 180 / 3.14)")
+                    print("Server Response Position:    \(value["curpos_x"].float) \(value["curpos_y"].float)")
+                    print("Server Response Discription: \(value["description"].stringValue)")
                     completion(value["description"].stringValue)  // right, left, ...
                 case .failure(let error):
                     print(error)

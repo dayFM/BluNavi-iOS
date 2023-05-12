@@ -9,6 +9,8 @@ import SwiftUI
 
 struct NavigatingCard: View {
     @ObservedObject var sessionManager: SessionManager
+    @ObservedObject var uwbManager: UWBManager
+    
     var timer = Timer.publish(every: 0.25, on: .main, in: .default).autoconnect()
     
     var body: some View {
@@ -30,13 +32,13 @@ struct NavigatingCard: View {
                 Spacer()
                     .frame(height: 70)
                 
-                Text("Turn " + sessionManager.selectedTagDirection)
-                    .font(.custom("Inter-Black", size: 40))
+                Text("Turn \(uwbManager.connectedTagDirectionByUWB[sessionManager.selectedDestinationTag?.ssid ?? "99a8c3e5fd7b5ecbe61e91969cfc5605"] ?? "Unknown")")
+                    .font(.custom("Inter-Black", size: 35))
                     .foregroundColor(Color(hex: "00B2FF"))
                     .frame(width: 320, alignment: .leading)
                 
-                Text("\(sessionManager.ssidToDistances[sessionManager.selectedDestinationTag?.ssid ?? "99a8c3e5fd7b5ecbe61e91969cfc5605"] ?? 10.0, specifier: "%.1f") feet away")
-                    .font(.custom("Inter-Black", size: 40))
+                Text("\(sessionManager.ssidToDistances[sessionManager.selectedDestinationTag?.ssid ?? "99a8c3e5fd7b5ecbe61e91969cfc5605"] ?? 10.0, specifier: "%.1f") meters away")
+                    .font(.custom("Inter-Black", size: 35))
                     .foregroundColor(Color(hex: "00B2FF"))
                     .frame(width: 320, alignment: .leading)
             }
@@ -64,6 +66,9 @@ struct NavigatingCard: View {
 
 struct NavigatingCard_Previews: PreviewProvider {
     static var previews: some View {
-        NavigatingCard(sessionManager: SessionManager())
+        let sessionManager = SessionManager()
+        let uwbManager = UWBManager(sessionManager: sessionManager)
+        
+        NavigatingCard(sessionManager: sessionManager, uwbManager: uwbManager)
     }
 }

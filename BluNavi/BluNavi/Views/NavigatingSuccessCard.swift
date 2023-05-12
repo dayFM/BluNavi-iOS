@@ -38,7 +38,7 @@ struct NavigatingSuccessCard: View {
                     .font(.custom("Inter-Black", size: 25))
                     .foregroundColor(.black)
                 
-                Text("About 3 feet high")
+                Text("About 3 meters high")
                     .font(.custom("Inter-Black", size: 25))
                     .foregroundColor(.black)
                 

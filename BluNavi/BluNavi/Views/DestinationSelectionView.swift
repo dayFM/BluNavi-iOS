@@ -60,7 +60,7 @@ struct DestinationSelectionView: View {
                     .frame(height: 25)
                 
                 if !sessionManager.destinationFound {
-                    NavigatingCard(sessionManager: sessionManager)
+                    NavigatingCard(sessionManager: sessionManager, uwbManager: uwbManager)
                 } else {
                     NavigatingSuccessCard(sessionManager: sessionManager)
                     

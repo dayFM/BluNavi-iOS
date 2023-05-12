@@ -11,12 +11,19 @@ import EstimoteUWB
 class UWBManager: ObservableObject {
     @Published var uwbManager: EstimoteUWBManager?
     @Published var connectedTags: Set<String>
+    @Published var connectedTagDirectionByUWB: [String: String]
+    
     var sessionManager: SessionManager
     
     init(sessionManager: SessionManager) {
         self.sessionManager = sessionManager
         self.connectedTags = Set<String>()
+        
+        self.connectedTagDirectionByUWB = [String: String]()
+        
         self.uwbManager = EstimoteUWBManager(positioningObserver: self, discoveryObserver: self, beaconRangingObserver: self)
+        
+
     }
     
     func startScanningUWBAccessories() {
@@ -33,8 +40,22 @@ extension UWBManager: UWBPositioningObserver {
     func didUpdatePosition(for device: UWBDevice) {
         print("position updated for device: \(device)")
         print("Distance: " + String(device.distance))
-//        print(device.vector ?? "Vector Not Known")
+        print(device.vector ?? "Vector Not Known")
         
+        if device.vector == nil {
+            self.connectedTagDirectionByUWB[device.publicId] = "Rear"
+        } else {
+            
+            if -0.1 <= device.vector!.x && device.vector!.x <= 0.1 {
+                self.connectedTagDirectionByUWB[device.publicId] = "Front"
+            } else if device.vector!.x >= 0.5 {
+                self.connectedTagDirectionByUWB[device.publicId] = "Leftfront"
+            } else {
+                self.connectedTagDirectionByUWB[device.publicId] = "Rightfront"
+            }
+            
+        }
+                
         // Updte distance in sessionManager
         self.sessionManager.ssidToDistances[device.publicId] = device.distance
     }
