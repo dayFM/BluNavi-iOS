@@ -13,21 +13,13 @@ struct ContentView: View {
     @ObservedObject var sessionManager: SessionManager
     
     var body: some View {
-        NavigationView {
-            VStack {
-                ScanningView()
-                
-                NavigationLink(destination: DestinationSelectionView(sessionManager: sessionManager)) {
-                    Text("Click me to get started")
-                }
-            }
-        }
+        ScanningView(uwbManager: uwbManager, sessionManager: sessionManager)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(uwbManager: UWBManager(), sessionManager: SessionManager())
+        ContentView(uwbManager: UWBManager(sessionManager: SessionManager()), sessionManager: SessionManager())
             .previewDevice(PreviewDevice(rawValue: "iPhone 13"))
     }
 }

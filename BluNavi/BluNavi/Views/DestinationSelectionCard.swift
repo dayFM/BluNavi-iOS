@@ -40,19 +40,18 @@ struct DestinationSelectionCard: View {
                     }
                 } else {
                     VStack(alignment: .leading) {
-                        // MARK: - Sink button
+                        // MARK: - Lock button
                         Button {
                             withAnimation {
-                                // TODO: Add function here
-                                print("Sink button clicked")
+                                print("Lock button clicked")
                                 
                                 sessionManager.startLocationing(
-                                    selectedTag: Tag(id: "", ssid: "asdas", loc: "Sink", battery: 100.0, positionX: 0.0, positionY: 0.0, positionZ: 0.0)
+                                    selectedTag: Tag(id: "yellow", ssid: "4fdff8d27d4e2c70d274b781710a1000", loc: "lock", battery: 100.0, positionX: 1, positionY: 2, positionZ: 0.8)
                                 )
                             }
                         } label: {
                             VStack {
-                                Text("Sink.")
+                                Text("Lock.")
                                     .font(.custom("Inter-Black", size: 30))
                                     .foregroundColor(.white)
                             }
@@ -63,34 +62,44 @@ struct DestinationSelectionCard: View {
                             .cornerRadius(10)
                         }
                         
-                        // MARK: - Room Door button
+                        // MARK: - Toilet button
                         Button {
-                            // TODO: Add function here
-                            print("Room Door button clicked")
+                            withAnimation {
+                                print("Toilet button clicked")
+                                
+                                sessionManager.startLocationing(
+                                    selectedTag: Tag(id: "white", ssid: "99a8c3e5fd7b5ecbe61e91969cfc5605", loc: "toilet", battery: 100.0, positionX: 1, positionY: 2, positionZ: 0.8)
+                                )
+                            }
                         } label: {
                             VStack {
-                                Text("Room Door.")
+                                Text("Toilet.")
                                     .font(.custom("Inter-Black", size: 30))
                                     .foregroundColor(.white)
                             }
-                            .frame(width: 208, height: 50)
+                            .frame(width: 131, height: 50)
                             .background(
                                 LinearGradient(gradient: Gradient(colors: [Color(hex: "00B2FF"), Color(hex: "CDE8F4")]), startPoint: .bottomLeading, endPoint: .topTrailing)
                             )
                             .cornerRadius(10)
                         }
                         
-                        // MARK: - Room Handle button
+                        // MARK: - Toilet Paper button
                         Button {
-                            // TODO: Add function here
-                            print("Room handle button clicked")
+                            withAnimation {
+                                print("Toilet Paper button clicked")
+                                
+                                sessionManager.startLocationing(
+                                    selectedTag: Tag(id: "yellow", ssid: "827239f64378a06c4aacf9a7b286ed30", loc: "toiletpaper", battery: 100.0, positionX: 1, positionY: 2, positionZ: 0.8)
+                                )
+                            }
                         } label: {
                             VStack {
-                                Text("Room Handle.")
+                                Text("Toilet Paper.")
                                     .font(.custom("Inter-Black", size: 30))
                                     .foregroundColor(.white)
                             }
-                            .frame(width: 241, height: 50)
+                            .frame(width: 230, height: 50)
                             .background(
                                 LinearGradient(gradient: Gradient(colors: [Color(hex: "00B2FF"), Color(hex: "CDE8F4")]), startPoint: .bottomLeading, endPoint: .topTrailing)
                             )

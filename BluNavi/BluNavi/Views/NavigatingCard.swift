@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NavigatingCard: View {
     @ObservedObject var sessionManager: SessionManager
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var body: some View {
         // MARK: - Which object do you want to go?
@@ -26,11 +27,11 @@ struct NavigatingCard: View {
                 Spacer()
                     .frame(height: 70)
                 
-                Text("Turn Left")
+                Text("Turn " + sessionManager.selectedTagDirection)
                     .font(.custom("Inter-Black", size: 40))
                     .foregroundColor(Color(hex: "00B2FF"))
                 
-                Text("15.2 feet away.")
+                Text(String(sessionManager.ssidToDistances[sessionManager.selectedDestinationTag?.ssid ?? "4fdff8d27d4e2c70d274b781710a1000"] ?? 10.0) + " feet away.")
                     .font(.custom("Inter-Black", size: 40))
                     .foregroundColor(Color(hex: "00B2FF"))
             }
@@ -43,6 +44,9 @@ struct NavigatingCard: View {
         .cornerRadius(13)
         .transition(.move(edge: .bottom))  // TODO: Haven't tested it
         .shadow(color: Color(hex: "006895").opacity(0.15), radius: 12)
+        .onReceive(timer) { time in
+            sessionManager.updateTagDirection()
+        }
     }
 }
 

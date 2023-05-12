@@ -16,6 +16,8 @@
 		8C7044BE2A0CFEA400ECBEED /* NavigatingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7044BD2A0CFEA400ECBEED /* NavigatingCard.swift */; };
 		8C7044C02A0D716F00ECBEED /* DestinationSelectionCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7044BF2A0D716F00ECBEED /* DestinationSelectionCard.swift */; };
 		8C7044C22A0D798300ECBEED /* NavigatingSuccessCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7044C12A0D798300ECBEED /* NavigatingSuccessCard.swift */; };
+		8C7044C72A0D8A6400ECBEED /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 8C7044C62A0D8A6400ECBEED /* Alamofire */; };
+		8C7044CA2A0DC46F00ECBEED /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 8C7044C92A0DC46F00ECBEED /* SwiftyJSON */; };
 		8CB9F7642A0CD13A00CB8EFB /* EstimoteUWB.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB9F7622A0CD11F00CB8EFB /* EstimoteUWB.xcframework */; };
 		8CB9F7652A0CD13A00CB8EFB /* EstimoteUWB.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB9F7622A0CD11F00CB8EFB /* EstimoteUWB.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8CB9F7712A0CD21600CB8EFB /* Inter-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8CB9F7682A0CD21600CB8EFB /* Inter-ExtraBold.ttf */; };
@@ -82,7 +84,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C7044CA2A0DC46F00ECBEED /* SwiftyJSON in Frameworks */,
 				8CB9F7642A0CD13A00CB8EFB /* EstimoteUWB.xcframework in Frameworks */,
+				8C7044C72A0D8A6400ECBEED /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,6 +206,10 @@
 			dependencies = (
 			);
 			name = BluNavi;
+			packageProductDependencies = (
+				8C7044C62A0D8A6400ECBEED /* Alamofire */,
+				8C7044C92A0DC46F00ECBEED /* SwiftyJSON */,
+			);
 			productName = BluNavi;
 			productReference = 8C04B0AF2A0B11FE00D2103F /* BluNavi.app */;
 			productType = "com.apple.product-type.application";
@@ -230,6 +238,10 @@
 				Base,
 			);
 			mainGroup = 8C04B0A62A0B11FE00D2103F;
+			packageReferences = (
+				8C7044C52A0D8A6400ECBEED /* XCRemoteSwiftPackageReference "Alamofire" */,
+				8C7044C82A0DC46F00ECBEED /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+			);
 			productRefGroup = 8C04B0B02A0B11FE00D2103F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -411,6 +423,7 @@
 				INFOPLIST_FILE = BluNavi/Info.plist;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "BluNavi uses Bluetooth to connect to the beacons in the bathroom.";
 				INFOPLIST_KEY_NSNearbyInteractionAllowOnceUsageDescription = "BluNavi requires this info to get distance and direction of the beacons.";
+				INFOPLIST_KEY_NSNearbyInteractionUsageDescription = "BluNavi requires this info to get distance and direction of the beacons.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -444,6 +457,7 @@
 				INFOPLIST_FILE = BluNavi/Info.plist;
 				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "BluNavi uses Bluetooth to connect to the beacons in the bathroom.";
 				INFOPLIST_KEY_NSNearbyInteractionAllowOnceUsageDescription = "BluNavi requires this info to get distance and direction of the beacons.";
+				INFOPLIST_KEY_NSNearbyInteractionUsageDescription = "BluNavi requires this info to get distance and direction of the beacons.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -485,6 +499,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8C7044C52A0D8A6400ECBEED /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		8C7044C82A0DC46F00ECBEED /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8C7044C62A0D8A6400ECBEED /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8C7044C52A0D8A6400ECBEED /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		8C7044C92A0DC46F00ECBEED /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8C7044C82A0DC46F00ECBEED /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8C04B0A72A0B11FE00D2103F /* Project object */;
 }

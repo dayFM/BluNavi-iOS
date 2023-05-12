@@ -9,9 +9,17 @@ import SwiftUI
 
 @main
 struct BluNaviApp: App {
+    let sessionManager: SessionManager
+    let uwbManager: UWBManager
+    
+    init() {
+        self.sessionManager = SessionManager()
+        self.uwbManager = UWBManager(sessionManager: self.sessionManager)
+    }
+    
     var body: some Scene {
         WindowGroup {
-            ContentView(uwbManager: UWBManager(), sessionManager: SessionManager())
+            ContentView(uwbManager: self.uwbManager, sessionManager: self.sessionManager)
         }
     }
 }
