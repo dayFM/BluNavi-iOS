@@ -43,7 +43,7 @@ class SessionManager: ObservableObject {
     func checkDestinationFound() {
         guard let tagSsid = self.selectedDestinationTag?.ssid else { return }
         
-        if self.sessionStarted && self.ssidToDistances[tagSsid]! <= 0.1 {
+        if self.sessionStarted && self.ssidToDistances[tagSsid]! <= 0.2 {
             self.destinationFound = true
         }
     }

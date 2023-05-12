@@ -36,12 +36,8 @@ struct DestinationSelectionView: View {
                         .frame(width: 20)
                     
                     VStack(alignment: .leading) {
-                        Text("Restroom")
-                            .font(.custom("Inter-Medium", size: 30))
-                            .foregroundColor(Color(hex: "898989"))
-                        
-                        Text("Detected.")
-                            .font(.custom("Inter-Medium", size: 30))
+                        Text("Restroom Detected.")
+                            .font(.custom("Inter-Bold", size: 27))
                             .foregroundColor(Color(hex: "898989"))
                     }
                     

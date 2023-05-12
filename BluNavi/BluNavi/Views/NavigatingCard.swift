@@ -25,6 +25,7 @@ struct NavigatingCard: View {
                 
                 Text(sessionManager.selectedDestinationTag?.loc ?? "Unknown")
                     .font(.custom("Inter-Black", size: 30))
+                    .frame(width: 200, alignment: .leading)
                 
                 Spacer()
                     .frame(height: 70)
@@ -32,12 +33,14 @@ struct NavigatingCard: View {
                 Text("Turn " + sessionManager.selectedTagDirection)
                     .font(.custom("Inter-Black", size: 40))
                     .foregroundColor(Color(hex: "00B2FF"))
+                    .frame(width: 320, alignment: .leading)
                 
                 Text("\(sessionManager.ssidToDistances[sessionManager.selectedDestinationTag?.ssid ?? "99a8c3e5fd7b5ecbe61e91969cfc5605"] ?? 10.0, specifier: "%.1f") feet away")
                     .font(.custom("Inter-Black", size: 40))
                     .foregroundColor(Color(hex: "00B2FF"))
+                    .frame(width: 320, alignment: .leading)
             }
-            .frame(width: 342, height: 307)
+            .frame(width: 320, height: 307)
             
             Spacer()
             
@@ -48,9 +51,13 @@ struct NavigatingCard: View {
         .transition(.move(edge: .bottom))  // TODO: Haven't tested it
         .shadow(color: Color(hex: "006895").opacity(0.15), radius: 12)
         .onReceive(timer) { _ in
-            print("here")
             sessionManager.updateTagDirection()
-            sessionManager.checkDestinationFound()
+            
+            print("RESULT \(sessionManager.destinationFound)")
+            
+            if !sessionManager.destinationFound {
+                sessionManager.checkDestinationFound()
+            }
         }
     }
 }
