@@ -9,15 +9,17 @@ import SwiftUI
 
 struct NavigatingCard: View {
     @ObservedObject var sessionManager: SessionManager
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    var timer = Timer.publish(every: 0.25, on: .main, in: .default).autoconnect()
     
     var body: some View {
-        // MARK: - Which object do you want to go?
         HStack {
             Spacer()
-                .frame(width: 20)
+                .frame(width: 10)
             
             VStack(alignment: .leading) {
+                Spacer()
+                    .frame(height: 10)
+                
                 Text("Navigating you to")
                     .font(.custom("Inter-Black", size: 30))
                 
@@ -31,21 +33,24 @@ struct NavigatingCard: View {
                     .font(.custom("Inter-Black", size: 40))
                     .foregroundColor(Color(hex: "00B2FF"))
                 
-                Text(String(sessionManager.ssidToDistances[sessionManager.selectedDestinationTag?.ssid ?? "4fdff8d27d4e2c70d274b781710a1000"] ?? 10.0) + " feet away.")
+                Text("\(sessionManager.ssidToDistances[sessionManager.selectedDestinationTag?.ssid ?? "99a8c3e5fd7b5ecbe61e91969cfc5605"] ?? 10.0, specifier: "%.1f") feet away")
                     .font(.custom("Inter-Black", size: 40))
                     .foregroundColor(Color(hex: "00B2FF"))
             }
+            .frame(width: 342, height: 307)
             
             Spacer()
             
         }
-        .frame(width: 342, height: 357)
+        .frame(width: 342, height: 307)
         .background(.white)
         .cornerRadius(13)
         .transition(.move(edge: .bottom))  // TODO: Haven't tested it
         .shadow(color: Color(hex: "006895").opacity(0.15), radius: 12)
-        .onReceive(timer) { time in
+        .onReceive(timer) { _ in
+            print("here")
             sessionManager.updateTagDirection()
+            sessionManager.checkDestinationFound()
         }
     }
 }

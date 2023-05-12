@@ -93,7 +93,7 @@ struct ScanningView: View {
                 stopTimer()
             }
         } else {
-            DestinationSelectionView(sessionManager: sessionManager)
+            DestinationSelectionView(sessionManager: sessionManager, uwbManager: uwbManager)
         }
     }
 }

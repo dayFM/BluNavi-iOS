@@ -15,10 +15,12 @@ class SessionManager: ObservableObject {
     @Published var sessionStarted: Bool
     @Published var ssidToDistances: [String: Float]
     @Published var selectedTagDirection: String
+    @Published var destinationFound: Bool
     
     init() {
         self.selectedDestinationTag = nil
         self.sessionStarted = false
+        self.destinationFound = false
         self.selectedTagDirection = "Unknown"
         
         self.ssidToDistances = [String: Float]()
@@ -35,6 +37,15 @@ class SessionManager: ObservableObject {
     func stopLocationing() {
         self.selectedDestinationTag = nil
         self.sessionStarted = false
+        self.destinationFound = false
+    }
+    
+    func checkDestinationFound() {
+        guard let tagSsid = self.selectedDestinationTag?.ssid else { return }
+        
+        if self.sessionStarted && self.ssidToDistances[tagSsid]! <= 0.1 {
+            self.destinationFound = true
+        }
     }
     
     func updateTagDirection() {
@@ -46,7 +57,7 @@ class SessionManager: ObservableObject {
     }
     
     func requestTagDirection(tagSsid: String, completion: @escaping(String) -> Void) {
-        let baseURL = "http://10.155.234.210:3000"
+        let baseURL = "http://10.155.234.210:4999"
 
         // JSON Body
         let body: [[String : Any]] = [
@@ -74,6 +85,7 @@ class SessionManager: ObservableObject {
             .responseDecodable(of: JSON.self) { response in
                 switch response.result {
                 case .success(let value):
+                    print("Server Response Value: \(value)")
                     completion(value["description"].stringValue)  // right, left, ...
                 case .failure(let error):
                     print(error)
